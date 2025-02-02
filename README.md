@@ -1,14 +1,24 @@
 # 📍 Location App
 
-Bu uygulama, React Native ve Expo kullanılarak geliştirilmiş bir konum takip uygulamasıdır.
+Location App, toplu taşıma yolcuları için geliştirilmiş akıllı bir uyku asistanıdır. Varış noktanıza yaklaştığınızda sizi titreşimle uyandırır, böylece gideceğiniz yeri kaçırmazsınız.
 
 ## 🚀 Özellikler
 
-- Gerçek zamanlı konum takibi
-- Harita üzerinde görselleştirme
-- Konum geçmişi
-- Bildirimler
-- Arka planda konum takibi
+- Hedef konuma yaklaşıldığında titreşimli uyarı sistemi
+- OpenStreetMap üzerinden kolay varış noktası seçimi
+- Arka planda çalışma özelliği ile kesintisiz takip
+- Özelleştirilebilir uyarı mesafesi (100m - 500m arası)
+- Seyahat geçmişi
+- Sık kullanılan konumları kaydetme
+- Düşük pil tüketimi için optimize edilmiş sistem
+- Türkiye'ye özel adres ve konum araması
+
+## 🎯 Kullanım Senaryoları
+
+- Toplu taşımada seyahat ederken güvenle uyuyabilme
+- Uzun yolculuklarda varış noktasını kaçırmama
+- Gece seyahatlerinde uyanık kalmaya gerek olmadan yolculuk yapabilme
+- Bilmediğiniz güzergahlarda bile rahatlıkla dinlenebilme
 
 ## 🛠 Teknolojiler
 
@@ -17,8 +27,12 @@ Bu uygulama, React Native ve Expo kullanılarak geliştirilmiş bir konum takip 
 - React Navigation
 - Expo Location
 - React Native Maps
+- OpenStreetMap (Nominatim API)
 - AsyncStorage
 - TypeScript
+- Expo Haptics (Titreşim desteği için)
+- Expo Task Manager (Arka plan görevleri için)
+- Expo Notifications
 
 ## 📋 Gereksinimler
 
@@ -41,11 +55,7 @@ Bu uygulama, React Native ve Expo kullanılarak geliştirilmiş bir konum takip 
    npm install
    ```
 
-3. Gerekli ortam değişkenlerini ayarlayın
-   - `.env.example` dosyasını `.env` olarak kopyalayın
-   - Gerekli API anahtarlarını ekleyin
-
-4. Uygulamayı başlatın
+3. Uygulamayı başlatın
    ```bash
    npx expo start
    ```
@@ -56,19 +66,34 @@ Bu uygulama, React Native ve Expo kullanılarak geliştirilmiş bir konum takip 
 - Android Emülatör için: `npm run android`
 - Web için: `npm run web`
 
-## 🔑 Ortam Değişkenleri
+## 🔐 İzinler
 
-Aşağıdaki ortam değişkenlerinin `.env` dosyasında tanımlanması gerekmektedir:
+Uygulama aşağıdaki izinleri kullanmaktadır:
 
-```
-GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-```
+### Android
+- ACCESS_COARSE_LOCATION
+- ACCESS_FINE_LOCATION
+- ACCESS_BACKGROUND_LOCATION
+- FOREGROUND_SERVICE
+- VIBRATE
+- WAKE_LOCK
 
-## 📝 Notlar
+### iOS
+- NSLocationWhenInUseUsageDescription
+- NSLocationAlwaysAndWhenInUseUsageDescription
+- NSLocationAlwaysUsageDescription
+- Background Modes (Location updates)
 
-- Uygulamayı production ortamına almadan önce tüm API anahtarlarının güvenli bir şekilde saklandığından emin olun
-- Arka plan konum izinlerinin kullanıcı tarafından verildiğinden emin olun
+## 📝 Önemli Notlar
+
+- Uygulama arka planda çalışırken pil tüketimini optimize etmek için konum güncellemelerini akıllıca yönetir
+- Titreşim özelliğinin düzgün çalışması için gerekli izinlerin verildiğinden emin olun
+- OpenStreetMap kullanım koşullarına uygun olarak, saniyede 1'den fazla istek atılmamaktadır
 - iOS ve Android platformları için gerekli izinlerin yapılandırıldığından emin olun
+
+## ⚠️ Sorumluluk Reddi
+
+Bu uygulama bir yardımcı araçtır ve %100 güvenilirlik garantisi vermez. Kritik seyahatlerinizde yedek alarm sistemleri kullanmanızı öneririz.
 
 ## 🤝 Katkıda Bulunma
 
@@ -82,8 +107,3 @@ GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakın.
 
-## 📞 İletişim
-
-Proje Sahibi - [@github_username](https://github.com/github_username)
-
-Proje Linki: [https://github.com/github_username/locationapp](https://github.com/github_username/locationapp)
